@@ -1,13 +1,15 @@
-import React from 'react'
+import React from "react";
 
-type Props = {children:React.ReactNode}
+type Props = {
+  children: React.ReactNode;
+};
 
-const layout = ({children}: Props) => {
+const layout = ({ children }: Props) => {
   return (
-    <div className='container h-screen flex justify-center items-center'>
-        {children}
-        </div>
-  )
-}
+    <div className="contsiner h-screen flex justify-center items-center">
+      {children}
+    </div>
+  );
+};
 
-export default layout
+export default layout;

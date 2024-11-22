@@ -4,9 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
-
-const LandingPageNavbar = (props: Props) => {
+const LandingPageNavbar = () => {
   return (
     <div className="flex w-full justify-between items-center">
       <div className="text-3xl font-semibold flex items-center gap-x-3">

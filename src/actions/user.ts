@@ -4,7 +4,9 @@ import { client } from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs/server";
 
 export const onAuthenticateUser = async () => {
+  console.log("start")
   try {
+    console.log("enter")
     const user = await currentUser();
     if (!user) {
       return { status: 403 };
@@ -23,13 +25,16 @@ export const onAuthenticateUser = async () => {
         },
       },
     });
+    console.log(userExist)
+
     if (userExist) {
       return { status: 200, user: userExist };
     }
+
     const newUser = await client.user.create({
       data: {
         clerkid: user.id,
-        email: user.emailAddresses[0].emailAddress,
+        email: user.emailAddresses[0]?.emailAddress,
         firstname: user.firstName,
         lastname: user.lastName,
         image: user.imageUrl,
@@ -61,11 +66,13 @@ export const onAuthenticateUser = async () => {
         },
       },
     });
+    console.log(newUser)
     if (newUser) {
-      return { status: 200, user: newUser };
+      return { status: 201, user: newUser };
     }
     return { status: 400 };
-  } catch (error) {
+  } catch {
+    console.log("not entered")
     return { status: 500 };
   }
 };

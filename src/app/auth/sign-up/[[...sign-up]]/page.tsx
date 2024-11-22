@@ -1,10 +1,7 @@
-import React from 'react'
-import { SignUp } from '@clerk/nextjs'
+import { SignUp } from "@clerk/nextjs";
 
-type Props = {}
+const SignUpPage = () => {
+  return <SignUp />;
+};
 
-const SignUpPage = (props: Props) => {
-  return <SignUp />
-}
-
-export default SignUpPage
+export default SignUpPage;
