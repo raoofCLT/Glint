@@ -4,9 +4,7 @@ import { client } from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs/server";
 
 export const onAuthenticateUser = async () => {
-  console.log("start")
   try {
-    console.log("enter")
     const user = await currentUser();
     if (!user) {
       return { status: 403 };
@@ -25,7 +23,6 @@ export const onAuthenticateUser = async () => {
         },
       },
     });
-    console.log(userExist)
 
     if (userExist) {
       return { status: 200, user: userExist };
@@ -66,13 +63,11 @@ export const onAuthenticateUser = async () => {
         },
       },
     });
-    console.log(newUser)
     if (newUser) {
       return { status: 201, user: newUser };
     }
     return { status: 400 };
   } catch {
-    console.log("not entered")
     return { status: 500 };
   }
 };
